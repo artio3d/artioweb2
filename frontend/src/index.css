@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap');
 
 body {
     margin: 0;
@@ -12,6 +12,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #0a0a0a;
 }
 
 code {
@@ -21,57 +22,26 @@ code {
 
 @layer base {
   :root {
-        --background: 39 20% 98%;
-        --foreground: 0 0% 17%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 17%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 17%;
+        --background: 0 0% 4%;
+        --foreground: 0 0% 100%;
+        --card: 0 0% 10%;
+        --card-foreground: 0 0% 100%;
+        --popover: 0 0% 10%;
+        --popover-foreground: 0 0% 100%;
         --primary: 40 30% 60%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 37 17% 87%;
-        --secondary-foreground: 0 0% 17%;
-        --muted: 37 17% 87%;
-        --muted-foreground: 30 5% 42%;
-        --accent: 37 17% 87%;
-        --accent-foreground: 0 0% 17%;
+        --primary-foreground: 0 0% 0%;
+        --secondary: 0 0% 10%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 0 0% 10%;
+        --muted-foreground: 0 0% 70%;
+        --accent: 40 30% 60%;
+        --accent-foreground: 0 0% 0%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 37 17% 87%;
-        --input: 37 17% 87%;
+        --border: 40 30% 40%;
+        --input: 40 30% 40%;
         --ring: 40 30% 60%;
-        --chart-1: 40 70% 60%;
-        --chart-2: 30 60% 50%;
-        --chart-3: 20 50% 45%;
-        --chart-4: 37 45% 55%;
-        --chart-5: 45 55% 65%;
-        --radius: 0.5rem;
-    }
-  .dark {
-        --background: 0 0% 10%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 10%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 10%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 40 30% 60%;
-        --primary-foreground: 0 0% 17%;
-        --secondary: 0 0% 18%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 18%;
-        --muted-foreground: 30 5% 65%;
-        --accent: 0 0% 18%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 18%;
-        --input: 0 0% 18%;
-        --ring: 40 30% 60%;
-        --chart-1: 40 70% 60%;
-        --chart-2: 30 60% 50%;
-        --chart-3: 20 50% 45%;
-        --chart-4: 37 45% 55%;
-        --chart-5: 45 55% 65%;
+        --radius: 1rem;
     }
 }
 
@@ -96,4 +66,26 @@ code {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Dark theme input styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
 }

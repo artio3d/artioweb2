@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import modern sans-serif fonts (TT Lakes Neue alternative) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Import modern geometric sans-serif fonts (TT Lakes Neue style) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
     margin: 0;

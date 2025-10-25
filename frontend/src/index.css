@@ -57,7 +57,8 @@ code {
 
 /* Custom utility classes */
 .font-playfair {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .font-lato {

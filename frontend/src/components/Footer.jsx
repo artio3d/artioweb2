@@ -15,7 +15,7 @@ const Footer = () => {
           <motion.div
             key={i}
             className="absolute border border-[#14B8A6]/30"
-            style={
+            style={{
               left: `${20 + i * 30}%`,
               bottom: `${10 + i * 20}%`,
               width: `${40 + i * 10}px`,

@@ -1,64 +1,53 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from './ui/carousel';
-import { portfolioProjects, studioInfo } from '../mock';
+import { ChevronDown } from 'lucide-react';
+import { Button } from './ui/button';
+import { artioData } from '../mock';
 
 const Hero = () => {
-  const featuredProjects = portfolioProjects.filter(p => p.featured);
+  const scrollToProject = () => {
+    const element = document.getElementById('project');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section id="home" className="min-h-screen bg-[#FAF8F6] pt-20">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Hero Text */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-playfair font-bold text-[#2C2C2C] mb-6 leading-tight">
-            {studioInfo.tagline}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]">
+      {/* Subtle glow effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A86A]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#B8956A]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        {/* Logo/Brand */}
+        <div className="mb-8">
+          <h1 className="text-7xl md:text-9xl font-playfair font-bold text-white tracking-wider mb-4">
+            {artioData.brandName}
           </h1>
-          <p className="text-lg md:text-xl text-[#6B6660] font-lato max-w-3xl mx-auto">
-            Transforming architectural visions into photorealistic 3D experiences
-          </p>
+          <div className="h-1 w-24 bg-gradient-to-r from-transparent via-[#C9A86A] to-transparent mx-auto" />
         </div>
 
-        {/* Featured Projects Carousel */}
-        <div className="relative mt-16">
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {featuredProjects.map((project) => (
-                <CarouselItem key={project.id}>
-                  <div className="relative h-[500px] md:h-[600px] rounded-lg overflow-hidden group">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                      <div className="text-[#C9A86A] text-sm font-lato mb-2 tracking-widest uppercase">
-                        {project.category}
-                      </div>
-                      <h2 className="text-3xl md:text-5xl font-playfair font-bold text-white mb-3">
-                        {project.title}
-                      </h2>
-                      <p className="text-white/90 text-lg font-lato max-w-2xl">
-                        {project.description}
-                      </p>
-                      <div className="mt-4 text-white/70 text-sm font-lato">
-                        Area: {project.area}
-                      </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-4 bg-white/90 hover:bg-white text-[#2C2C2C] border-none" />
-            <CarouselNext className="right-4 bg-white/90 hover:bg-white text-[#2C2C2C] border-none" />
-          </Carousel>
+        {/* Tagline */}
+        <p className="text-2xl md:text-4xl font-playfair text-white/90 mb-4 leading-relaxed">
+          {artioData.tagline}
+        </p>
+        <p className="text-lg md:text-xl font-lato text-white/70 mb-12 max-w-3xl mx-auto">
+          {artioData.subTagline}
+        </p>
+
+        {/* CTA Button */}
+        <Button
+          onClick={scrollToProject}
+          className="bg-[#C9A86A] hover:bg-[#B8956A] text-black font-lato font-semibold px-8 py-6 text-lg rounded-full transition-all duration-300 shadow-lg shadow-[#C9A86A]/20 hover:shadow-[#C9A86A]/40 hover:scale-105"
+        >
+          Explore the 3D View
+        </Button>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-8 h-8 text-[#C9A86A]" />
         </div>
       </div>
     </section>

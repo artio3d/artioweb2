@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Instagram, Linkedin, Send } from 'lucide-react';
-import { contactInfo } from '../mock';
+import { artioData } from '../mock';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
@@ -23,7 +23,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock form submission
     console.log('Form submitted:', formData);
     toast({
       title: "Message sent!",
@@ -33,77 +32,83 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#E8E3DD]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16">
+    <section id="contact" className="py-24 bg-[#0a0a0a] relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#C9A86A]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-playfair font-bold text-white mb-6">
+            {artioData.contactSection.title}
+          </h2>
+          <p className="text-lg md:text-xl font-lato text-white/70 max-w-3xl mx-auto">
+            {artioData.contactSection.description}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
           {/* Left: Contact Info */}
-          <div>
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#2C2C2C] mb-6">
-              Let's Work Together
-            </h2>
-            <p className="text-lg text-[#6B6660] font-lato mb-8 leading-relaxed">
-              Ready to bring your interior vision to life? Get in touch to discuss your project and receive a personalized quote.
-            </p>
+          <div className="space-y-8">
+            {/* Email */}
+            <a
+              href={`mailto:${artioData.contactInfo.email}`}
+              className="flex items-center space-x-4 text-white/80 hover:text-[#C9A86A] transition-colors group"
+            >
+              <div className="w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center group-hover:bg-[#C9A86A]/20 transition-colors border border-[#C9A86A]/20">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="text-sm font-lato text-white/50 mb-1">Email</div>
+                <div className="font-lato font-medium text-lg">{artioData.contactInfo.email}</div>
+              </div>
+            </a>
 
-            <div className="space-y-6">
-              {/* Email */}
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="flex items-center space-x-4 text-[#6B6660] hover:text-[#C9A86A] transition-colors group"
-              >
-                <div className="w-12 h-12 bg-[#FAF8F6] rounded-full flex items-center justify-center group-hover:bg-[#C9A86A] transition-colors">
-                  <Mail className="w-5 h-5 group-hover:text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-lato text-[#6B6660] mb-1">Email</div>
-                  <div className="font-lato font-medium">{contactInfo.email}</div>
-                </div>
-              </a>
+            {/* Phone */}
+            <a
+              href={`tel:${artioData.contactInfo.phone}`}
+              className="flex items-center space-x-4 text-white/80 hover:text-[#C9A86A] transition-colors group"
+            >
+              <div className="w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center group-hover:bg-[#C9A86A]/20 transition-colors border border-[#C9A86A]/20">
+                <Phone className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="text-sm font-lato text-white/50 mb-1">Phone</div>
+                <div className="font-lato font-medium text-lg">{artioData.contactInfo.phone}</div>
+              </div>
+            </a>
 
-              {/* Phone */}
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="flex items-center space-x-4 text-[#6B6660] hover:text-[#C9A86A] transition-colors group"
-              >
-                <div className="w-12 h-12 bg-[#FAF8F6] rounded-full flex items-center justify-center group-hover:bg-[#C9A86A] transition-colors">
-                  <Phone className="w-5 h-5 group-hover:text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-lato text-[#6B6660] mb-1">Phone</div>
-                  <div className="font-lato font-medium">{contactInfo.phone}</div>
-                </div>
-              </a>
-
-              {/* Social Media */}
-              <div className="pt-4">
-                <div className="text-sm font-lato text-[#6B6660] mb-4">Follow Us</div>
-                <div className="flex space-x-4">
-                  <a
-                    href={contactInfo.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-[#FAF8F6] rounded-full flex items-center justify-center hover:bg-[#C9A86A] transition-colors group"
-                  >
-                    <Instagram className="w-5 h-5 text-[#6B6660] group-hover:text-white" />
-                  </a>
-                  <a
-                    href={contactInfo.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-[#FAF8F6] rounded-full flex items-center justify-center hover:bg-[#C9A86A] transition-colors group"
-                  >
-                    <Linkedin className="w-5 h-5 text-[#6B6660] group-hover:text-white" />
-                  </a>
-                </div>
+            {/* Social Media */}
+            <div className="pt-8">
+              <div className="text-sm font-lato text-white/50 mb-4">Follow Us</div>
+              <div className="flex space-x-4">
+                <a
+                  href={artioData.contactInfo.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center hover:bg-[#C9A86A]/20 transition-colors border border-[#C9A86A]/20 group"
+                >
+                  <Instagram className="w-6 h-6 text-white/70 group-hover:text-[#C9A86A]" />
+                </a>
+                <a
+                  href={artioData.contactInfo.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 bg-[#1a1a1a] rounded-full flex items-center justify-center hover:bg-[#C9A86A]/20 transition-colors border border-[#C9A86A]/20 group"
+                >
+                  <Linkedin className="w-6 h-6 text-white/70 group-hover:text-[#C9A86A]" />
+                </a>
               </div>
             </div>
           </div>
 
           {/* Right: Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
+          <div className="bg-[#1a1a1a] p-8 rounded-2xl border border-[#C9A86A]/10 shadow-xl">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-lato font-medium text-[#2C2C2C] mb-2">
+                <label htmlFor="name" className="block text-sm font-lato font-medium text-white/90 mb-2">
                   Your Name
                 </label>
                 <Input
@@ -113,13 +118,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="border-[#E8E3DD] focus:border-[#C9A86A] focus:ring-[#C9A86A]"
+                  className="bg-[#0a0a0a] border-[#C9A86A]/20 focus:border-[#C9A86A] text-white placeholder:text-white/30"
                   placeholder="John Doe"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-lato font-medium text-[#2C2C2C] mb-2">
+                <label htmlFor="email" className="block text-sm font-lato font-medium text-white/90 mb-2">
                   Email Address
                 </label>
                 <Input
@@ -129,14 +134,14 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="border-[#E8E3DD] focus:border-[#C9A86A] focus:ring-[#C9A86A]"
+                  className="bg-[#0a0a0a] border-[#C9A86A]/20 focus:border-[#C9A86A] text-white placeholder:text-white/30"
                   placeholder="john@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-lato font-medium text-[#2C2C2C] mb-2">
-                  Project Details
+                <label htmlFor="message" className="block text-sm font-lato font-medium text-white/90 mb-2">
+                  Your Message
                 </label>
                 <Textarea
                   id="message"
@@ -145,14 +150,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="border-[#E8E3DD] focus:border-[#C9A86A] focus:ring-[#C9A86A] resize-none"
+                  className="bg-[#0a0a0a] border-[#C9A86A]/20 focus:border-[#C9A86A] text-white placeholder:text-white/30 resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-[#C9A86A] hover:bg-[#B8956A] text-white font-lato py-6 transition-colors duration-200"
+                className="w-full bg-[#C9A86A] hover:bg-[#B8956A] text-black font-lato font-semibold py-6 transition-all duration-300 shadow-lg shadow-[#C9A86A]/20 hover:shadow-[#C9A86A]/40"
               >
                 <Send className="w-5 h-5 mr-2" />
                 Send Message

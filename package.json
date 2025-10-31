@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "homepage": "https://artio3d.github.io/artioweb2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
